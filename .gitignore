@@ -12,8 +12,5 @@ __pycache__/
 # Ignore Jupyter notebook checkpoints
 .ipynb_checkpoints/
 
-# Ignore datasets (optional if spam.csv is large)
-*.csv
-*.xlsx
 
 
