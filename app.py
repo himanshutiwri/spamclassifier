@@ -20,12 +20,17 @@ nltk.data.path.append(nltk_data_dir)
 
 # Download required packages (only if missing)
 nltk.download('punkt', download_dir=nltk_data_dir)
-nltk.download('punkt_tab', download_dir=nltk_data_dir)
 nltk.download('stopwords', download_dir=nltk_data_dir)
 
 # Initialize Stemmer and Stopwords
 ps = PorterStemmer()
 stop_words = set(stopwords.words('english'))
+
+# =========================
+# Load model and vectorizer at top-level
+# =========================
+tfidf = pickle.load(open('vectorizer.pkl', 'rb'))
+model = pickle.load(open('model.pkl', 'rb'))
 
 # =========================
 # Text preprocessing
@@ -64,14 +69,10 @@ def predict():
     return render_template('index.html', result=result)
 
 # =========================
-# Main
+# Main (only for local development)
 # =========================
 if __name__ == '__main__':
-    # Load model and vectorizer
-    tfidf = pickle.load(open('vectorizer.pkl', 'rb'))
-    model = pickle.load(open('model.pkl', 'rb'))
-    
-    # Use PORT from Render or default 5000
     port = int(os.environ.get("PORT", 5000))
-    app.run(host='0.0.0.0', port=port)
+    app.run(host='0.0.0.0', port=port, debug=True)
+
 
