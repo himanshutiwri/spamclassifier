@@ -4,83 +4,72 @@ from nltk.corpus import stopwords
 from nltk.stem.porter import PorterStemmer
 import pickle
 import string
-import os
 
 app = Flask(__name__)
 
-# =========================
-# NLTK Setup
-# =========================
-nltk_data_dir = os.path.join(os.path.dirname(__file__), "nltk_data")
-if not os.path.exists(nltk_data_dir):
-    os.mkdir(nltk_data_dir)
+# Download NLTK data
+nltk.download('punkt')
+nltk.download('stopwords')
 
-# Add custom nltk data path
-nltk.data.path.append(nltk_data_dir)
-
-# Download required packages (only if missing)
-try:
-    nltk.data.find('tokenizers/punkt')
-except LookupError:
-    nltk.download('punkt', download_dir=nltk_data_dir)
-
-try:
-    nltk.data.find('corpora/stopwords')
-except LookupError:
-    nltk.download('stopwords', download_dir=nltk_data_dir)
-
-# Initialize Stemmer and Stopwords
+# Initialize stemmer
 ps = PorterStemmer()
-stop_words = set(stopwords.words('english'))
 
-# =========================
-# Load model and vectorizer
-# =========================
-tfidf = pickle.load(open('vectorizer.pkl', 'rb'))
-model = pickle.load(open('model.pkl', 'rb'))
-
-# =========================
-# Text preprocessing
-# =========================
+# Text preprocessing function
 def transform_text(text):
     text = text.lower()
     text = nltk.word_tokenize(text)
-    # Remove non-alphanumeric
-    text = [i for i in text if i.isalnum()]
-    # Remove stopwords & punctuation
-    text = [i for i in text if i not in stop_words and i not in string.punctuation]
-    # Stemming
-    text = [ps.stem(i) for i in text]
-    return " ".join(text)
 
-# =========================
+    # Remove non-alphanumeric
+    y = []
+    for i in text:
+        if i.isalnum():
+            y.append(i)
+    text = y[:]
+    y.clear()
+
+    # Remove stopwords and punctuation
+    for i in text:
+        if i not in stopwords.words('english') and i not in string.punctuation:
+            y.append(i)
+    text = y[:]
+    y.clear()
+
+    # Stemming
+    for i in text:
+        y.append(ps.stem(i))
+
+    return " ".join(y)
+
 # Prediction function
-# =========================
 def predict_spam(message):
+    # Preprocess
     transformed_sms = transform_text(message)
+    # Vectorize
     vector_input = tfidf.transform([transformed_sms])
+    # Predict
     result = model.predict(vector_input)[0]
     return result
 
-# =========================
 # Routes
-# =========================
 @app.route('/')
 def home():
     return render_template('index.html')
 
 @app.route('/predict', methods=['POST'])
 def predict():
-    input_sms = request.form['message']
-    result = predict_spam(input_sms)
-    return render_template('index.html', result=result)
+    if request.method == 'POST':
+        input_sms = request.form['message']
+        result = predict_spam(input_sms)
+        return render_template('index.html', result=result)  # Pass result to template
 
-# =========================
-# Main (only for local development)
-# =========================
+# Main
 if __name__ == '__main__':
-    port = int(os.environ.get("PORT", 5000))
-    app.run(host='0.0.0.0', port=port)
+    # Load model and vectorizer
+    tfidf = pickle.load(open('vectorizer.pkl', 'rb'))
+    model = pickle.load(open('model.pkl', 'rb'))
+
+    app.run(host='0.0.0.0', port=5000, debug=True)
+
 
 
 
