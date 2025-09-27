@@ -49,7 +49,7 @@ source venv/bin/activate  # (Linux/Mac)
    ![image](<"https://github.com/user-attachments/assets/9e40871d-f6d6-48b1-8458-ba9dc774ac9c")
 
    The output:
-   ![image](<"https://github.com/user-attachments/assets/64da89ae-8996-4ef4-a5f7-65e46bc82958")
+   ![image](<"https://github.com/user-attachments/assets/8772f3bc-f962-493a-b61f-9b234bd2f534")
 
 
    
