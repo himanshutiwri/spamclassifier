@@ -44,7 +44,7 @@ source venv/bin/activate  # (Linux/Mac)
 
 6. **So click on manual Deploy and select deploy with latest commit**
    -and wait 2-3 mint after that your website will be published.
-   -https://spam-classifier-d15y.onrender.com/
+   -https://spamclassifier-qozp.onrender.com/
 
    ![image](<"https://github.com/user-attachments/assets/9e40871d-f6d6-48b1-8458-ba9dc774ac9c")
 
