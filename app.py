@@ -9,8 +9,8 @@ import string
 app = Flask(__name__)
 
 # Download NLTK data
-# nltk.download('punkt')
-# nltk.download('stopwords')
+nltk.download('punkt')
+nltk.download('stopwords')
 
 # Initialize stemmer
 ps = PorterStemmer()
