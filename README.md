@@ -39,17 +39,17 @@ source venv/bin/activate  # (Linux/Mac)
    -go to this website: https://dashboard.render.com/web
    -then click on new and choose web serivces
    -choose this :Build and deploy from a Git repository and click on next
-   -then in settings :image can be seen in screenshot folder ("https://github.com/himanshutiwri/spamclassifier/blob/main/Screenshot%202025-09-27%20113600.png")
+   -then in settings :image can be seen in screenshot folder ![image](<"https://github.com/himanshutiwri/spamclassifier/blob/main/Screenshot%202025-09-27%20113600.png")
 
 
 6. **So click on manual Deploy and select deploy with latest commit**
    -and wait 2-3 mint after that your website will be published.
    -https://spamclassifier-qozp.onrender.com/
 
-   image (<"https://github.com/himanshutiwri/spamclassifier/blob/main/Screenshot%202025-09-27%20114322.png")
+   ![image](<"https://github.com/himanshutiwri/spamclassifier/blob/main/Screenshot%202025-09-27%20114322.png")
 
    The output:
-   image (<"https://github.com/himanshutiwri/spamclassifier/blob/main/Screenshot%202025-09-27%20145716.png")
+   ![image](<"https://github.com/himanshutiwri/spamclassifier/blob/main/Screenshot%202025-09-27%20145716.png")
 
 
    
