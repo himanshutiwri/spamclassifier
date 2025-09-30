@@ -46,7 +46,7 @@ source venv/bin/activate  # (Linux/Mac)
    -and wait 2-3 mint after that your website will be published.
    -https://spamclassifier-qozp.onrender.com/
 
-[Screenshot 2](screenshot/Screenshot_2025-09-27_114322.png)
+click on screenshot 2 to see the page [Screenshot 2](screenshot/Screenshot_2025-09-27_114322.png)
 
 The output:
 [Screenshot 3](screenshot/Screenshot_2025-09-27_145716.png)
