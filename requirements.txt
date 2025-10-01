@@ -1,6 +1,6 @@
 nltk
 scikit-learn
-Flask
+flask
 Flask-Cors
 numpy
 pandas
