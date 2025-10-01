@@ -7,7 +7,8 @@ import pickle
 import string
 
 app = Flask(__name__)
-
+tfidf = pickle.load(open('vectorizer.pkl', 'rb'))
+model = pickle.load(open('model.pkl', 'rb'))
 # Download NLTK data
 nltk.download('punkt_tab')
 nltk.download('stopwords')
