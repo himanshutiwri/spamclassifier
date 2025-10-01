@@ -9,7 +9,7 @@ import string
 app = Flask(__name__)
 
 # Download NLTK data
-nltk.download('punkt')
+nltk.download('punkt_tab')
 nltk.download('stopwords')
 
 # Initialize stemmer
